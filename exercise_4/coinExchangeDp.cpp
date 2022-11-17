@@ -16,7 +16,9 @@ int minimumCoinChange(int target, int *coins, int coinsNumber)
     for (int i = 1; i <= coinsNumber; i++)
         for (int j = 1; j <= target; j++)
             if (coins[i - 1] <= j)
+                // We evaluate the minimum using the previous or the actual value - the coin + 1
                 table[i][j] = min(table[i - 1][j], 1 + table[i][j - coins[i - 1]]);
+            // If the coin is greater than the change then we use the previous result
             else table[i][j] = table[i - 1][j];
 
     return table[coinsNumber][target];
@@ -24,6 +26,7 @@ int minimumCoinChange(int target, int *coins, int coinsNumber)
 
 int main(void)
 {
+    // Coins number is always gonna be five, because of the problem
     int n = 5;
     int coins[] = {1, 5, 10, 20, 100};
     int K;
