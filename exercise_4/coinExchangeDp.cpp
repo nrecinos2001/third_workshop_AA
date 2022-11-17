@@ -3,6 +3,8 @@
 
 using namespace std;
 
+// target: it's the value we want to know the minimum coins to make it
+// coins and coinsNumber is the array and the lenght of the array of coins
 int minimumCoinChange(int target, int *coins, int coinsNumber)
 {
     int table[coinsNumber + 1][target + 1];
