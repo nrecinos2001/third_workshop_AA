@@ -30,10 +30,17 @@ int minimum_fuel_calculator(int cities_number, int tank_max_capacity)
 int main()
 {
   int cities_number = 0, tank_max_capacity = 0, minimum_money_needed = 0;
-  cout << "Type the number of cities to visit: ";
-  cin >> cities_number;
-  cout << "Type the your tank's maximum capacity of fuel in litters: ";
-  cin >> tank_max_capacity;
+  do
+  {
+    cout << "Type the number of cities to visit: ";
+    cin >> cities_number;
+  } while (cities_number < 2 || cities_number > 100);
+
+  do
+  {
+    cout << "Type the your tank's maximum capacity of fuel in litters: ";
+    cin >> tank_max_capacity;
+  } while (cities_number < 1 || cities_number > 100);
 
   minimum_money_needed = minimum_fuel_calculator(cities_number, tank_max_capacity);
 
