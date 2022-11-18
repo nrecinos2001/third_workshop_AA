@@ -1,0 +1,19 @@
+minimum_fuel_calculator(cities, tankMaxCap)
+  currentLitters = 0
+  requiredLitters = cities - 1
+  prices[n]
+  prices[0] = 0
+  littersToFill = 0
+
+  for from 1 to cities
+    if required_litters > 0
+      littersToFill = MIN(tankMaxCap - currentLitters, requiredLitters)
+      currentLitters = currentLitters + littersToFill
+      currentLitters += -1
+      prices[i] = prices[i-1] + (littersToFill * i)
+      requiredLitters -= LittersToFill
+
+    else
+      prices[i] = prices[i-1]
+
+  return prices[cities - 1];
