@@ -4,18 +4,27 @@ using namespace std;
 
 int minimum_fuel_calculator(int cities_number, int tank_max_capacity)
 {
-  int current_litter = 0, required_litters = cities_number - 1, cost = 0;
+  int current_litters = 0, required_litters = cities_number - 1;
+  int cost[cities_number];
+  cost[0] = 0;
   int litters_to_fill = 0;
 
   for (int i = 1; i < cities_number; i++)
   {
-    litters_to_fill = min(tank_max_capacity - current_litter, required_litters);
-    current_litter += litters_to_fill;
-    current_litter += -1;
-    cost += (litters_to_fill * i);
-    required_litters -= litters_to_fill;
+    if (required_litters > 0)
+    {
+      litters_to_fill = min(tank_max_capacity - current_litters, required_litters);
+      current_litters += litters_to_fill;
+      current_litters += -1;
+      cost[i] = cost[i - 1] + (litters_to_fill * i);
+      required_litters -= litters_to_fill;
+    }
+    else
+    {
+      cost[i] = cost[i - 1];
+    }
   }
-  return cost;
+  return cost[cities_number - 1];
 }
 
 int main()
@@ -28,7 +37,7 @@ int main()
 
   minimum_money_needed = minimum_fuel_calculator(cities_number, tank_max_capacity);
 
-  cout << "You need at least " << minimum_money_needed << " for fuel in order to complete the travel.";
+  cout << "You need at least $" << minimum_money_needed << " for fuel in order to complete the travel.\n";
 
   return 0;
 }
